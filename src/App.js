@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { getUsers } from './API/user';
 import './App.css';
+import CreateUser from './components/CreateUser/CreateUser';
 
 class App extends Component {
+  getUsersHandler = () => {
+    getUsers()
+      .then(res => {
+        debugger;
+      })
+      .catch(err => {
+        debugger;
+      })
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <CreateUser />
         </header>
+        <div>
+          <button type="button" onClick={this.getUsersHandler}>
+            get Users
+        </button>
+        </div>
       </div>
     );
   }
